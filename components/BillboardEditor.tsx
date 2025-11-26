@@ -539,7 +539,19 @@ export default function BillboardEditor() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex">
+    <>
+      {/* Mobile Warning - Only visible on tablets and smaller */}
+      <div className="md:hidden min-h-screen bg-gray-900 flex items-center justify-center p-6">
+        <div className="bg-gray-800 p-8 rounded-lg max-w-md text-center">
+          <h2 className="text-2xl font-bold text-white mb-4">Desktop Only</h2>
+          <p className="text-gray-300">
+            This site only works on desktop. Please visit on a larger screen to use the billboard generator.
+          </p>
+        </div>
+      </div>
+
+      {/* Main App - Hidden on mobile */}
+      <div className="hidden md:flex min-h-screen bg-gray-900">
       {/* Fixed Sidebar */}
       <div className="w-96 bg-gray-800 fixed left-0 top-0 h-screen flex flex-col">
         <div className="flex-1 overflow-y-auto p-6">
@@ -824,5 +836,6 @@ export default function BillboardEditor() {
         </div>
       </div>
     </div>
+    </>
   );
 }
