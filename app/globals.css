@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Tiptap editor styles */
+.tiptap p {
+  display: block;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tiptap p + p {
+  margin-top: 0.5em;
+}
+
+/* Override font-size in the Tiptap editor - keep it constant for editing */
+.bg-gray-700 .tiptap span[style*="font-size"],
+.bg-gray-700 .tiptap p {
+  font-size: 20px !important;
+}
