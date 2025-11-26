@@ -122,13 +122,18 @@ export default function BillboardEditor() {
 
     console.log('Adding text - billboardBounds:', billboardBounds);
 
+    const width = 300;
+    const height = 100;
+    const billboardWidth = billboardBounds.right - billboardBounds.left;
+    const billboardHeight = billboardBounds.bottom - billboardBounds.top;
+
     const newElement: Element = {
       id: `text-${Date.now()}`,
       type: 'text',
-      x: billboardBounds.left + 50 + offset,
-      y: billboardBounds.top + 50 + offset,
-      width: 300,
-      height: 100,
+      x: billboardBounds.left + (billboardWidth - width) / 2 + offset,
+      y: billboardBounds.top + (billboardHeight - height) / 2 + offset,
+      width,
+      height,
       content: 'EDIT ME',
       htmlContent: '<p style="text-align: center"><span style="font-family: Oswald; font-size: 24px">EDIT ME</span></p>',
       fontSize: 24,
@@ -149,7 +154,7 @@ export default function BillboardEditor() {
       const newElement: Element = {
         id: `logo-${Date.now()}`,
         type: 'logo',
-        x: billboardBounds.right - 200,
+        x: billboardBounds.right - targetWidth - 50,
         y: billboardBounds.top + 50,
         width: targetWidth,
         height: targetHeight,
@@ -521,7 +526,7 @@ export default function BillboardEditor() {
         if (!blob) throw new Error('Failed to create blob');
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.download = 'billboard-hq.png';
+        link.download = 'billboard.png';
         link.href = url;
         link.click();
         URL.revokeObjectURL(url);
@@ -538,7 +543,7 @@ export default function BillboardEditor() {
       {/* Fixed Sidebar */}
       <div className="w-96 bg-gray-800 fixed left-0 top-0 h-screen flex flex-col">
         <div className="flex-1 overflow-y-auto p-6">
-          <h1 className="text-2xl font-bold mb-6 text-white">Billboard Editor</h1>
+          <h1 className="text-2xl font-bold mb-6 text-white">Fake Billboard Generator</h1>
 
           <div className="space-y-6">
           {/* Person Images */}
@@ -660,17 +665,46 @@ export default function BillboardEditor() {
       {/* Info Modal */}
       {showInfoModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setShowInfoModal(false)}>
-          <div className="bg-gray-800 p-8 rounded-lg max-w-md mx-4" onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-2xl font-bold text-white mb-4">Disclaimer</h2>
-            <p className="text-gray-300 mb-4">
-              This site is meant for entertainment purposes only. Nothing here is serious and I don't break any copyright laws or claim ownership of any images, logos, or content used.
-            </p>
-            <p className="text-gray-300 mb-6">
-              All content created is for parody, satire, and educational purposes.
-            </p>
+          <div className="bg-gray-800 p-8 rounded-lg max-w-2xl mx-4 max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <h2 className="text-2xl font-bold text-white mb-6">Copyright & Fair Use Notice</h2>
+
+            <div className="space-y-4 text-gray-300">
+              <p>
+                This is an unofficial fan site created for entertainment purposes only. All images, logos, and content are copyright © their respective owners.
+              </p>
+
+              <p>
+                No copyright infringement is intended. All copyrighted materials are used under fair use principles for non-commercial, educational, and entertainment purposes.
+              </p>
+
+              <h3 className="text-lg font-semibold text-white mt-6 mb-2">Privacy & Data</h3>
+              <p>
+                All image creation happens directly in your browser. When you save an image, it downloads only to your local machine. We do not store, upload, or retain any images you create or upload. Your creations remain private and under your control.
+              </p>
+
+              <h3 className="text-lg font-semibold text-white mt-6 mb-2">Non-Commercial Statement</h3>
+              <p>
+                This website is a fan project with no commercial intent. This site does not generate revenue from the use of copyrighted materials. Any support received through "Buy Me a Coffee" goes solely toward covering hosting costs and development time, not toward profiting from copyrighted content.
+              </p>
+
+              <h3 className="text-lg font-semibold text-white mt-6 mb-2">Disclaimer of Affiliation</h3>
+              <p>
+                This website is not affiliated with, endorsed by, or connected to any official entities. This is purely a fan-made tribute.
+              </p>
+
+              <h3 className="text-lg font-semibold text-white mt-6 mb-2">Takedown Policy</h3>
+              <p>
+                If you are a copyright holder and believe that any content on this site infringes your rights, please{' '}
+                <a href="mailto:info@samwightwick.co.uk" className="text-blue-400 hover:text-blue-300 underline">
+                  contact us
+                </a>
+                {' '}and we will promptly remove the content in question. We respect intellectual property rights and will comply with all legitimate requests.
+              </p>
+            </div>
+
             <button
               onClick={() => setShowInfoModal(false)}
-              className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 mt-6"
             >
               Got it
             </button>
