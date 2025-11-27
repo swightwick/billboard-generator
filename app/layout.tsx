@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Open_Sans, Oswald, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import CookieConsent from "./components/CookieConsent";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -34,6 +36,8 @@ export default function RootLayout({
         className={`${openSans.variable} ${oswald.variable} ${playfairDisplay.variable} antialiased font-[family-name:var(--font-open-sans)]`}
       >
         {children}
+        <CookieConsent />
+        <GoogleAnalytics />
       </body>
     </html>
   );

@@ -694,6 +694,23 @@ export default function BillboardEditor() {
                 All image creation happens directly in your browser. When you save an image, it downloads only to your local machine. We do not store, upload, or retain any images you create or upload. Your creations remain private and under your control.
               </p>
 
+              <h3 className="text-lg font-semibold text-white mt-6 mb-2">Cookie Usage</h3>
+              <p>
+                We use Google Analytics cookies to understand how visitors use our site. These cookies collect anonymous information including:
+              </p>
+              <ul className="list-disc list-inside ml-4 space-y-1">
+                <li>Pages visited and time spent on the site</li>
+                <li>Browser type and device information</li>
+                <li>Geographic location (country/city level only)</li>
+                <li>How you arrived at our site (referral source)</li>
+              </ul>
+              <p className="mt-2">
+                We also use a strictly necessary cookie to remember your cookie consent preference. You can change your cookie settings at any time by clearing your browser's local storage for this site.
+              </p>
+              <p className="mt-2">
+                No personally identifiable information is collected. Analytics cookies are only set if you click "Accept" on the cookie banner.
+              </p>
+
               <h3 className="text-lg font-semibold text-white mt-6 mb-2">Non-Commercial Statement</h3>
               <p>
                 This website is a fan project with no commercial intent. This site does not generate revenue from the use of copyrighted materials. Any support received through "Buy Me a Coffee" goes solely toward covering hosting costs and development time, not toward profiting from copyrighted content.
